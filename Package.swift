@@ -154,8 +154,7 @@ let package = Package(
             dependencies: [
                 "CTunnelKitCore",
                 "CTunnelKitOpenVPNCore",
-                .product(name: "openssl-apple", package: "openssl-apple",
-                         moduleAliases: ["openssl-apple": "OpenSSLLegacy"])
+                "openssl-apple"
             ]
         ),
         .target(
