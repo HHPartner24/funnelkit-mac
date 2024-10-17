@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -40,7 +40,7 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/SwiftyBeaver/SwiftyBeaver", from: "1.9.0"),
-        .package(url: "https://github.com/passepartoutvpn/openssl-apple", from: "3.2.108"),
+        .package(url: "https://github.com/passepartoutvpn/openssl-apple", from: "1.1.11700"),
 //        .package(name: "WireGuardKit", url: "https://git.zx2c4.com/wireguard-apple", .exact("1.0.15-26")),
         .package(name: "WireGuardKit", url: "https://github.com/passepartoutvpn/wireguard-apple", .exact("1.0.17"))
 //        .package(name: "WireGuardKit", url: "https://github.com/passepartoutvpn/wireguard-apple", .revision("73d9152fa0cb661db0348a1ac11dbbf998422a50"))
@@ -154,8 +154,10 @@ let package = Package(
             dependencies: [
                 "CTunnelKitCore",
                 "CTunnelKitOpenVPNCore",
-                "openssl-apple"
-            ]),
+                .product(name: "openssl-apple", package: "openssl-apple",
+                         moduleAliases: ["openssl-apple": "OpenSSLLegacy"])
+            ]
+        ),
         .target(
             name: "__TunnelKitUtils",
             dependencies: []),
